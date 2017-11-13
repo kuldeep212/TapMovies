@@ -2,9 +2,9 @@
 //This is receiving part. It continuously listening to the Webserver
     require_once __DIR__ . '/vendor/autoload.php';//RabbitMQ library
     use PhpAmqpLib\Connection\AMQPStreamConnection;//RabbitMQ library
-    $connection = new AMQPStreamConnection('10.0.2.4', 5672, 'admin', 'guest');//change ip and rabbitmq account info if needed
+    $connection = new AMQPStreamConnection('10.0.2.15', 5672, 'admin', 'admin');//change ip and rabbitmq account info if needed
     $channel = $connection->channel();//create channel
-    $channel->queue_declare('WWW_T_API', false, false, false, false);//open channel
+    $channel->queue_declare('WWW_T_API', true, false, false, false);//open channel
     echo ' * Waiting for messages. To exit press CTRL+C', "\n";//display if it is listening to
     $callback = function($msg){//Display if message received from Webserver
         echo " * Message received", "\n";
@@ -16,6 +16,9 @@
 		break;
 	case "TopRate"://if Function value is "TopRate", do TopRate.php
 		include 'TopRate.php';
+		break;
+	case "RecentMovie"://if Function value is "RecentMovie", do RecentMovie.php
+		include 'RecentMovie.php';
 		break;
 	default://if data received from Webserver is something wrong, display error message
 		echo "Key or value is something wrong";
