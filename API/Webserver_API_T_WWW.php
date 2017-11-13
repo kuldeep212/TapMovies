@@ -2,9 +2,9 @@
 //This file is Receiving part of WWWW. It listens to API for any result (WWW <- API) 
 require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;
-$connection = new AMQPConnection('10.0.2.4', 5672, 'admin', 'guest'); //Change IP address and rabbitMQ access account info
+$connection = new AMQPConnection('10.0.2.15', 5672, 'admin', 'admin'); //Change IP address and rabbitMQ access account info
 $channel = $connection->channel();
-$channel->queue_declare('API_T_WWW', false, false, false, false); //Queue name WWW <- API
+$channel->queue_declare('API_T_WWW', true, false, false, false); //Queue name WWW <- API
 echo ' * Waiting for messages. To exit press CTRL+C', "\n";
 $callback = function($msg){
 echo " * Message received", "\n";
