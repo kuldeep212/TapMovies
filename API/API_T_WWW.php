@@ -4,9 +4,9 @@
     require_once __DIR__ . '/vendor/autoload.php';//ribbitMQ library
     use PhpAmqpLib\Connection\AMQPStreamConnection;//ribbitMQ library
     use PhpAmqpLib\Message\AMQPMessage;//ribbitMQ library
-    $connection = new AMQPStreamConnection('10.0.2.4', 5672, 'admin', 'guest');//change ip and rabbitMQ account info if needed
+    $connection = new AMQPStreamConnection('10.0.2.15', 5672, 'admin', 'admin');//change ip and rabbitMQ account info if needed
     $channel = $connection->channel();//create channel
-    $channel->queue_declare('API_T_WWW', false, false, false, false);//open channel
+    $channel->queue_declare('API_T_WWW', true, false, false, false);//open channel
     $msg = new AMQPMessage($r_data, array('delivery_mode' => 2));//convert json data to rabbitMQ message
     $channel->basic_publish($msg, '', 'API_T_WWW');//send message to Webserver
     $channel->close();
