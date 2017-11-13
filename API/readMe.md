@@ -1,12 +1,13 @@
 
 TapMovies API Server
 
-@date 11/12/2017
-@version 0.2
+@date 11/11/2017
+@version 0.2 - 11/12/2017 
 CHANGE LOG
 
 
-Changed 
+Changed  
+
     Changed some php codes in all files in the API folder to test search, Recent_Movies, & top rated movies functions. 
     Result- Search, Top rated movies and Recent Movies functions working fine and getting data from tmdb. 
     Commented on Recent_Movie code to make more understandable. 
